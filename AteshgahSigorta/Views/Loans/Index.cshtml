@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DataAccessLayer.Models.AllLoans>
+@{
+    ViewData["Title"] = "Loans";
+}
+<h2 class="text-center">Loans</h2>
+<hr />
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientUniqueId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ClientFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayoutDay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientUniqueId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayoutDay)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "LoanDetails", new { clientId = item.ClientId, loanId = item.LoanId }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+<button onclick="window.close();" class="btn btn-danger float-right m-2">Exit</button>
+
+<a class="btn btn-success float-right m-2" asp-action="Create">Create New</a>
+
